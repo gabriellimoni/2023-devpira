@@ -18,10 +18,6 @@ export function realizarSaque(
   };
 }
 
-export function realizarDeposito(conta: Conta, valor: number): Conta {
-  return {} as Conta;
-}
-
 export function contratarChequeEspecial(
   conta: Conta,
   senha: string,
