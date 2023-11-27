@@ -1,5 +1,4 @@
 export interface Conta {
-  id: string;
   agencia: string;
   numero: string;
   senha: string;
