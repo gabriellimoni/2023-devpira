@@ -1,15 +1,21 @@
 # 2023-devpira
 
-To install dependencies:
+Instalação de dependências:
 
 ```bash
 bun install
 ```
 
-To run:
+Execução dos testes:
 
 ```bash
-bun run index.ts
+bun test
 ```
 
-This project was created using `bun init` in bun v1.0.14. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Demo
+
+1. Explicar que vamos implementar a função `realizarSaque` de uma conta-corrente;
+1. Mostrar um diagrama com a Partição de Equivalência e Análise de valores limite da função;
+1. Implementação da função `realizarSaque` com TDD;
+1. Implementação da função `contratarChequeEspecial` com TDD;
+1. Correção de bug com TDD em `realizarSaque`: permitindo sacar valores negativos.

@@ -14,7 +14,6 @@ export function realizarSaque(
   // TODO
   return {
     ...conta,
-    saldo: conta.saldo - valor,
   };
 }
 
