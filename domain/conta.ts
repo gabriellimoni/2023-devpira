@@ -11,7 +11,11 @@ export function realizarSaque(
   senha: string,
   valor: number
 ): Conta {
-  return {} as Conta;
+  // TODO
+  return {
+    ...conta,
+    saldo: conta.saldo - valor,
+  };
 }
 
 export function realizarDeposito(conta: Conta, valor: number): Conta {
