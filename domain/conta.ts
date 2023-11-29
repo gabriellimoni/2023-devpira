@@ -12,6 +12,7 @@ export function realizarSaque(
   valor: number
 ): Conta {
   if (!senhaValida(conta, senha)) throw new Error("Senha incorreta");
+  if (valor <= 0) throw new Error("Valor de saque inválido");
   if (!saldoSuficiente(conta, valor)) throw new Error("Saldo insuficiente");
   return {
     ...conta,

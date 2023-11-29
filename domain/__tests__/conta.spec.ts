@@ -102,6 +102,29 @@ describe("Realizar saque", () => {
       new Error("Saldo insuficiente")
     );
   });
+
+  test("Saque com valor negativo", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 100,
+      senha: "qualquer-senha",
+    };
+    expect(() => realizarSaque(conta, "qualquer-senha", -1)).toThrow(
+      new Error("Valor de saque inválido")
+    );
+  });
+  test("Saque com valor zero", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 100,
+      senha: "qualquer-senha",
+    };
+    expect(() => realizarSaque(conta, "qualquer-senha", 0)).toThrow(
+      new Error("Valor de saque inválido")
+    );
+  });
 });
 
 describe("Contratar cheque especial", () => {
