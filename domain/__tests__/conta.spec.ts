@@ -55,6 +55,53 @@ describe("Realizar saque", () => {
       new Error("Senha incorreta")
     );
   });
+
+  test("Saque convencional com saldo na conta, valor acima do saldo e cheque especial no limite", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 100,
+      senha: "qualquer-senha",
+      chequeEspecial: 20,
+    };
+    const resultado = realizarSaque(conta, "qualquer-senha", 120);
+    expect(resultado.saldo).toBe(-20);
+  });
+  test("Saque convencional sem saldo na conta, valor acima do saldo e cheque especial no limite", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 0,
+      senha: "qualquer-senha",
+      chequeEspecial: 20,
+    };
+    const resultado = realizarSaque(conta, "qualquer-senha", 20);
+    expect(resultado.saldo).toBe(-20);
+  });
+  test("Saque convencional sem saldo na conta, valor acima do saldo e do cheque especial", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 0,
+      senha: "qualquer-senha",
+      chequeEspecial: 20,
+    };
+    expect(() => realizarSaque(conta, "qualquer-senha", 21)).toThrow(
+      new Error("Saldo insuficiente")
+    );
+  });
+  test("Saque convencional con saldo na conta, valor acima do saldo e do cheque especial", () => {
+    const conta: Conta = {
+      agencia: "qualquer-agencia",
+      numero: "qualquer-numero",
+      saldo: 100,
+      senha: "qualquer-senha",
+      chequeEspecial: 20,
+    };
+    expect(() => realizarSaque(conta, "qualquer-senha", 121)).toThrow(
+      new Error("Saldo insuficiente")
+    );
+  });
 });
 
 describe("Contratar cheque especial", () => {
