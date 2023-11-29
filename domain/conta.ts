@@ -3,6 +3,7 @@ export interface Conta {
   numero: string;
   senha: string;
   saldo: number;
+  chequeEspecial?: number;
 }
 
 export function realizarSaque(
@@ -23,5 +24,12 @@ export function contratarChequeEspecial(
   senha: string,
   valor: number
 ): Conta {
-  return {} as Conta;
+  if (conta.senha !== senha) throw new Error("Senha incorreta");
+  if (valor > 10000) throw new Error("Valor maior que R$ 10.000");
+  if (conta.chequeEspecial)
+    throw new Error("Conta já tem cheque especial contratado");
+  return {
+    ...conta,
+    chequeEspecial: valor,
+  };
 }
