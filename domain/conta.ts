@@ -10,9 +10,11 @@ export function realizarSaque(
   senha: string,
   valor: number
 ): Conta {
-  // TODO
+  if (conta.senha !== senha) throw new Error("Senha incorreta");
+  if (conta.saldo < valor) throw new Error("Saldo insuficiente");
   return {
     ...conta,
+    saldo: conta.saldo - valor,
   };
 }
 
